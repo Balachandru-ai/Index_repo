@@ -1,0 +1,53 @@
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+}
+
+.form{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+input{
+    padding:10px;
+    flex:1;
+}
+
+button{
+    padding:10px 20px;
+    background:green;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#0077cc;
+    color:white;
+}
+
+.delete{
+    background:red;
+}
