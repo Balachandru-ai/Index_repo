@@ -6,16 +6,29 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/Balachandru-ai/Index_repo.git'
+                    url: 'https://github.com/Balachandru-ai/Index_repo.git'
+            }
+        }
+
+        stage('Show Workspace') {
+            steps {
+                sh '''
+                pwd
+                ls -la
+                find . -maxdepth 3
+                '''
             }
         }
 
         stage('Install Backend Dependencies') {
             steps {
                 sh '''
-                cd backend
+                cd employee-app/backend
+
                 python3 -m venv venv || true
+
                 . venv/bin/activate
+
                 pip install -r requirements.txt
                 '''
             }
@@ -24,7 +37,8 @@ pipeline {
         stage('Deploy Frontend') {
             steps {
                 sh '''
-                sudo cp frontend/* /usr/share/nginx/html/
+                sudo cp employee-app/frontend/* /usr/share/nginx/html/
+
                 sudo systemctl restart nginx
                 '''
             }
@@ -35,7 +49,7 @@ pipeline {
                 sh '''
                 pkill -f uvicorn || true
 
-                cd backend
+                cd employee-app/backend
 
                 nohup venv/bin/python -m uvicorn main:app \
                 --host 0.0.0.0 \
