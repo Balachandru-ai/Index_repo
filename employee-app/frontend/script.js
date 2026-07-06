@@ -1,4 +1,4 @@
-const API="http://13.48.149.24:8000";
+const API="/api";
 
 loadEmployees();
 
