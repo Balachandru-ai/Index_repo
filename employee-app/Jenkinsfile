@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/Balachandru-ai/employee-app.git'
+                url: 'https://github.com/Balachandru-ai/Index_repo.git'
             }
         }
 
